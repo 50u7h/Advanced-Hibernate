@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.guney</groupId>
-	<artifactId>hibernate-hb-06-map-components</artifactId>
+	<artifactId>hibernate-hb-07-map-enum</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<!-- FIXME change it to the project's website -->

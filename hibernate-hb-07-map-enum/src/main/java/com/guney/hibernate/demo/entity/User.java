@@ -1,17 +1,17 @@
 package com.guney.hibernate.demo.entity;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "STUDENT")
-public class Student {
+@Table(name = "USER")
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,23 +27,19 @@ public class Student {
 	@Column(name = "email")
 	private String email;
 
-	// The Address is @Embeddable, no annotation needed here...
-	private Address homeAddress;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "status")
+	private Status status;
 
-	// Overriding Embedded attributes
-	@AttributeOverrides({ @AttributeOverride(name = "street", column = @Column(name = "BILLING_STREET")),
-			@AttributeOverride(name = "zipcode", column = @Column(name = "BILLING_ZIPCODE")),
-			@AttributeOverride(name = "city", column = @Column(name = "BILLING_CITY")), })
-	private Address billingAddress;
-
-	public Student() {
+	public User() {
 
 	}
 
-	public Student(String firstName, String lastName, String email) {
+	public User(String firstName, String lastName, String email, Status status) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+		this.status = status;
 	}
 
 	public int getId() {
@@ -78,20 +74,12 @@ public class Student {
 		this.email = email;
 	}
 
-	public Address getAddress() {
-		return homeAddress;
+	public Status getStatus() {
+		return status;
 	}
 
-	public void setAddress(Address address) {
-		this.homeAddress = address;
-	}
-
-	public Address getBillingAddress() {
-		return billingAddress;
-	}
-
-	public void setBillingAddress(Address billingAddress) {
-		this.billingAddress = billingAddress;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	@Override
